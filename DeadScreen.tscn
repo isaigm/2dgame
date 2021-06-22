@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://fuente.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://DeadScreen.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.231373, 0.231373, 0.231373, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 1 )
+
+[node name="DeadScreen" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 590.0
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 964.0
+margin_bottom = 540.0
+custom_constants/separation = 64
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 924.0
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 2 )
+text = "HAS MUERTO"
+align = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 142.0
+margin_right = 924.0
+margin_bottom = 262.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer"]
+margin_left = 376.0
+margin_right = 548.0
+margin_bottom = 120.0
+custom_constants/separation = 30
+
+[node name="Reiniciar" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_right = 172.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 3 )
+text = " Reiniciar "
+
+[node name="Salir" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 75.0
+margin_right = 172.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 4 )
+text = "Salir"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/Reiniciar" to="." method="_on_Reiniciar_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/Salir" to="." method="_on_Salir_pressed"]
